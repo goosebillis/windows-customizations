@@ -1,5 +1,5 @@
-# --------──♡ PowerShell ~ Private ♡─────────--------------------------------------------------
-# Profile.ps1
+# --------──♡ Mai’s PowerShell ~ Private ♡─────────--------------------------------------------------
+# Wein’s Profile.ps1
 # mainly contain stuffs that makes my terminal workflow enjoyable 🐰
 # ───────────────────────────────────────────--------------------------------------------------------
 
@@ -10,7 +10,6 @@ Set-Alias vim nvim
 Set-Alias rename rename-item
 Set-Alias grep select-string
 Set-Alias nano micro
-set-alias rar "c:\Program Files\7-Zip\7zFM.exe"
 Set-Alias gpp g++
 Set-Alias wth wtf
 Set-Alias omp oh-my-posh
@@ -20,6 +19,8 @@ function rmdirs { remove-item -r -fo $args }
 function shutdowns { shutdown -s -t 0 } # Shutdown immediately
 function restart { shutdown -r -t 0 } # Restart immediately
 function gpath { pwd | scb } # Get Current Working Directory, then copy into clipboard
+function spotify { spicetify update } # Update Spicetify
+
 
 # ❥ My collection of lovely functions
 # ───────────────--------------------------------------------------------───────────────────────────🐰
@@ -29,7 +30,8 @@ function clearl {
         Clear the terminal and run fastfetch to flex~
     #>
   clear
-  fastfetch --config ~/.config/fastfetch/config.jsonc
+  fastfetch
+  echo ""
 }
 
 function ompSimple {
@@ -82,34 +84,34 @@ function touch {
 function open {
     <#
     .SYNOPSIS
-        Open URL using zen
+        Open URL using Brave
 
     .EXAMPLE 
         open google.com
 
-        Open up google.com on zen Browser
+        Open up google.com on Brave Browser
     #> 
     Param ( [string[]]$url )
-    start-process zen $url
+    start-process brave $url
 }
 
 function search {
     <#
     .SYNOPSIS
-        zen search with free‑form queries
+        Brave search with free‑form queries
 
     .NOTES
-        Remember to change to whatever search engine you're enjoy using (or keep it zen if you want it too)
+        Remember to change to whatever search engine you're enjoy using (or keep it brave if you want it too)
         
     .DESCRIPTION
-        Open up a new zen browser instance if not yet opened, or opened a new tab if a zen browser has already opened.
+        Open up a new Brave browser instance if not yet opened, or opened a new tab if a brave browser has already opened.
         You can typed the search queries without wrapping them using quotes or whatsoever, since it collects all the arguments
         passed as a whoel string.
 
     .EXAMPLE 
         search why am i so handsome?
 
-        Open up zen search for "why am i so handsome?"
+        Open up Brave search for "why am i so handsome?"
     #> 
     Param (
         [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
@@ -117,8 +119,8 @@ function search {
     )
 
     $fullQuery = $query -join ' '
-    $url = "https://duckduckgo.com/search?q=$([uri]::EscapeDataString($fullQuery))"
-    start zen $url
+    $url = "https://search.brave.com/search?q=$([uri]::EscapeDataString($fullQuery))"
+    start brave $url
 }
 
 function wtf {
@@ -127,17 +129,17 @@ function wtf {
         Search prefixed with “wtf …”
 
     .NOTES
-        Remember to change to whatever search engine you're enjoy using (or keep it zen if you want it too)
+        Remember to change to whatever search engine you're enjoy using (or keep it brave if you want it too)
         
     .DESCRIPTION
-        Open up a new zen browser instance if not yet opened, or opened a new tab if a zen browser has already opened.
+        Open up a new Brave browser instance if not yet opened, or opened a new tab if a brave browser has already opened.
         You can typed the search queries without wrapping them using quotes or whatsoever, since it collects all the arguments
         passed as a whoel string.
 
     .EXAMPLE 
         wtf is printf in C
 
-        Open up zen search for "wtf is printf in c"
+        Open up Brave search for "wtf is printf in c"
     #> 
     Param (
         [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
@@ -145,8 +147,8 @@ function wtf {
     )
     
     $fullQuery = 'wtf ' + $query -join ' '
-    $url = "https://duckduckgo.com/search?q=$([uri]::EscapeDataString($fullquery))"
-    start zen $url
+    $url = "https://search.brave.com/search?q=$([uri]::EscapeDataString($fullquery))"
+    start brave $url
 }
 
 function howtf {
@@ -155,17 +157,17 @@ function howtf {
         Search prefixed with “how tf …”
 
     .NOTES
-        Remember to change to whatever search engine you're enjoy using (or keep it zen if you want it too)
+        Remember to change to whatever search engine you're enjoy using (or keep it brave if you want it too)
         
     .DESCRIPTION
-        Open up a new zen browser instance if not yet opened, or opened a new tab if a zen browser has already opened.
+        Open up a new Brave browser instance if not yet opened, or opened a new tab if a brave browser has already opened.
         You can typed the search queries without wrapping them using quotes or whatsoever, since it collects all the arguments
         passed as a whoel string.
 
     .EXAMPLE 
         howtf do i accept multiple arguments in pwsh
 
-        Open up zen search for "how tf do i accept multiple arguments in pwsh"
+        Open up Brave search for "how tf do i accept multiple arguments in pwsh"
     #> 
     Param (
         [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
@@ -173,8 +175,8 @@ function howtf {
     )
 
     $fullQuery = 'how tf ' + $query -join ' '
-    $url = "https://duckduckgo.com/search?q=$([uri]::EscapeDataString($fullquery))"
-    start zen $url
+    $url = "https://search.brave.com/search?q=$([uri]::EscapeDataString($fullquery))"
+    start brave $url
 }
 
 function why {
@@ -183,17 +185,17 @@ function why {
         Search prefixed with “why …”
 
     .NOTES
-        Remember to change to whatever search engine you're enjoy using (or keep it zen if you want it too)
+        Remember to change to whatever search engine you're enjoy using (or keep it brave if you want it too)
         
     .DESCRIPTION
-        Open up a new zen browser instance if not yet opened, or opened a new tab if a zen browser has already opened.
+        Open up a new Brave browser instance if not yet opened, or opened a new tab if a brave browser has already opened.
         You can typed the search queries without wrapping them using quotes or whatsoever, since it collects all the arguments
         passed as a whoel string.
 
     .EXAMPLE 
         why do i need to free memory after using malloc C
 
-        Open up zen search for "why do i need to free memory after using malloc in C"
+        Open up Brave search for "why do i need to free memory after using malloc in C"
     #> 
     Param (
         [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
@@ -201,8 +203,8 @@ function why {
     )
 
     $fullQuery = 'why ' + $query -join ' '
-    $url = "https://duckduckgo.com/search?q=$([uri]::EscapeDataString($fullquery))"
-    start zen $url
+    $url = "https://search.brave.com/search?q=$([uri]::EscapeDataString($fullquery))"
+    start brave $url
 }
 
 
@@ -212,19 +214,19 @@ function translate {
         Open Google Translate (EN -> ID), supports `-r` for reverse mode (ID -> EN)
 
     .DESCRIPTION
-        Open up a new zen browser instance if not yet opened, or opened a new tab if a zen browser has already opened.
+        Open up a new Brave browser instance if not yet opened, or opened a new tab if a brave browser has already opened.
         You can typed the search queries without wrapping them using quotes or whatsoever, since it collects all the arguments
         passed as a whoel string.
 
     .EXAMPLE 
         translate chicken
 
-        Open up zen then search translation from EN to ID (chicken -> ayam)
+        Open up Brave then search translation from EN to ID (chicken -> ayam)
 
     .EXAMPLE 
         translate -r ayam
 
-        Open up zen then search translation from ID to EN (ayam -> chicken)
+        Open up Brave then search translation from ID to EN (ayam -> chicken)
     #> 
     [CmdletBinding()]
     Param (
@@ -244,7 +246,30 @@ function translate {
         $url = "https://translate.google.com/?sl=en&tl=id&text=$([uri]::EscapeDataString($fullQuery))&op=translate" 
     }
 
-    start zen $url
+    start brave $url
+}
+
+function download {
+    param(
+        [Parameter(Mandatory = $true)][string]$Url,
+        [Parameter(Mandatory = $true)][string]$Name,
+        [string]$Path = "D:/awairo/"
+    )
+
+    $pyScript = "Z:\Applications\custom\main_downloader.py"
+
+    python $pyScript $Url $Name $Path
+}
+
+function compress {
+    param(
+        [Parameter(Mandatory = $true)][string]$input_path,
+        [Parameter(Mandatory = $true)][string]$output_path
+    )
+
+    $pyScript = "Z:\Applications\code\py\compress_file.py"
+
+    python $pyscript $input_path $output_path
 }
 
 function mkdird {
@@ -267,12 +292,12 @@ function remove-vscLogo {
         [switch]$notFocus
     )
 
-    $output_loc = "C:\Users\toya\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\workbench.desktop.main.css"
+    $output_loc = "C:\Users\David McLean\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\workbench.desktop.main.css"
 
     if ($notFocus) {
-        $input_loc = "D:\custom\vsc-settings\settings\vscMode-nonFocus.css"
+        $input_loc = "Z:\Applications\custom\vsc-settings\settings\vscMode-nonFocus.css"
     } else {
-        $input_loc = "D:\custom\vsc-settings\settings\vsc-customcss.css"
+        $input_loc = "Z:\Applications\custom\vsc-settings\settings\vsc-customcss.css"
     }
 
     try {
@@ -380,7 +405,7 @@ function vscFocus {
     )
 
     $defaultPath = "C:\Users\David McLean\AppData\Roaming\Code\User\settings.json"
-    $customPath = "D:\custom\vsc-settings\settings\"
+    $customPath = "Z:\Applications\custom\vsc-settings\settings\"
 
     foreach ($arg in $args) {
         # the regex to accept only 1 word (ofc cuz it's flag lmao)
@@ -792,6 +817,9 @@ function komom {
         Write-Host -ForegroundColor Magenta "HAHA!! $($_.Exception.Message)"
     }
 }
+function fortune {
+	[System.IO.File]::ReadAllText((Split-Path $profile)+'\fortune.txt') -replace "`r`n", "`n" -split "`n%`n" | Get-Random
+}
 
 # ❥ Shell & Prompt Configurations
 # ───────────────--------------------------------------------------------───────────────────────────🐰
@@ -805,11 +833,12 @@ Set-PSReadLineOption -PredictionViewStyle InlineView
 $style_path = 'C:\Users\David McLean\AppData\Local\Programs\oh-my-posh\themes\mai.omp.json'
 $style_path_simple = 'C:\Users\David McLean\AppData\Local\Programs\oh-my-posh\themes\simple.omp.json'
 
-oh-my-posh init pwsh --config $style_path | Invoke-Expression
+oh-my-posh init pwsh | Invoke-Expression
 
 clear
-fastfetch
-
+fastfetch --logo .\.config\fastfetch\bongo.txt
+echo ""
+fortune; echo ''
 
 # ❥ Notes (for me)
 # ───────────────--------------------------------------------------------───────────────────────────🐰
