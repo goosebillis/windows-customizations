@@ -19,8 +19,6 @@ function rmdirs { remove-item -r -fo $args }
 function shutdowns { shutdown -s -t 0 } # Shutdown immediately
 function restart { shutdown -r -t 0 } # Restart immediately
 function gpath { pwd | scb } # Get Current Working Directory, then copy into clipboard
-function spotify { spicetify update } # Update Spicetify
-
 
 # ❥ My collection of lovely functions
 # ───────────────--------------------------------------------------------───────────────────────────🐰
