@@ -1,0 +1,147 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "source": "./bongo.txt",
+    "type": "file",
+    "padding": {
+      "top": 1
+    }
+  },
+  "display": {
+      //representation of the percent-bar of disk, memory and swap
+       "separator": "",
+       "constants": [
+        // CONSTANT {$1} - COLOR BACKGROUND FOR KEY set to black current
+        "\u001b[48;2;0;0;0m",
+        // CONSTANT {$2} - COLOR BACKGROUND FOR OUTPUT set to black current
+        "\u001b[00;0;0;0;00m",
+        // CONSTANT {$3} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD green
+        "\u001b[38;2;0;128;0m│                                                            │\u001b[60D\u001b[39m",
+        // CONSTANT {$4} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD magenta
+        "\u001b[38;2;255;0;255m│                                                            │\u001b[60D\u001b[39m",
+        // CONSTANT {$5} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD yellow
+        "\u001b[38;2;255;255;0m│                                                            │\u001b[60D\u001b[39m",
+        // CONSTANT {$6} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD cyan
+        "\u001b[38;2;0;255;255m│                                                            │\u001b[60D\u001b[39m",
+        // CONSTANT {$7} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD grey
+        "\u001b[38;2;128;128;128m│                                                            │\u001b[60D\u001b[39m",
+        // CONSTANT {$8} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD orange
+        "\u001b[38;2;255;69;0m│                                                            │\u001b[60D\u001b[39m",
+
+         // CONSTANT {$9} - set color orange
+        "\u001b[38;2;255;69;0m",
+         // CONSTANT {$10} - set color grey
+        "\u001b[38;2;128;128;128m",
+        // CONSTANT {$11} - set color cyan
+        "\u001b[38;2;0;255;255m",
+         // CONSTANT {$12} - set color yellow
+        "\u001b[38;2;255;255;0m",
+         // CONSTANT {$13} - set color magenta
+        "\u001b[38;2;255;121;198m",
+        // CONSTANT {$14} - set color blue
+        "\u001b[38;2;167;131;220m",
+      ]
+    },
+  
+  "modules": [
+    {
+      "type": "custom",
+      "format": "{$13}╭───────────────────────────────────────────────╮",
+	  "keyColor": "magenta"
+    },
+    {
+      "type": "host",
+      "key": "│┌ Host: ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "cpu",
+      "key": "│├ CPU: ",
+      "format": "{1}",
+      "showPeCoreCount": true,
+      "keyColor": "magenta"
+    },
+    {
+      "type": "memory",
+      "key": "│├ Memory: ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "disk",
+      "key": "│├ ",
+      "format": "{mountpoint}: {size-used} / {size-total}",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "gpu",
+      "key": "│└󰍛 GPU: ",
+      "format": "{2}",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "{$13}╰──────────────────────────────╯",
+	  "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "{$14}╭───────────────────────────────────────────────╮",
+	  "keyColor": "magenta"
+    },
+    {
+      "type": "os",
+      "key": "│┌󰣇 OS: ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "kernel",
+      "key": "│├ Kernel: ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "packages",
+      "key": "│├󰏖 Packages: ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "shell",
+      "key": "│├ Shell: ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "de",
+      "key": " DE",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wm",
+      "key": "│└ WM: ",
+      "keyColor": "blue"
+    },
+	{
+      "type": "custom",
+      "format": "{$14}╰─────────────────────────────╯",
+	  "keyColor": "magenta"
+    },
+    {
+      "type": "command",
+      "key": "OS Age ",
+      "keyColor": "magenta",
+      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+    },
+    {
+      "type": "uptime",
+      "key": "┌󰤆  Uptime: ",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "battery",
+      "key": "└  Battery: ",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
+    }
+  ]
+}
